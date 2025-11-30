@@ -4,7 +4,8 @@ import React from "react";
 export default function CartItem({ item, onUpdateQty, onRemove }) {
   // item.productId may be an object (populated) or just id
   const product = item.productId || item.product;
-  const img = product?.image ? `${import.meta.env.VITE_API_URL?.replace('/api','')||'http://localhost:5000/api'}/${product.image}` : null;
+  const base = import.meta.env.VITE_API_URL;
+  const img = p.image ? `${base}/${p.image}` : null;
 
   return (
     <div className="cart-item">
