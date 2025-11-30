@@ -10,7 +10,7 @@ export default function OrderSuccess() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await API.get(`/orders/${id}`);
+        const res = await API.get(`api/orders/${id}`);
         setOrder(res.data);
       } catch (err) {
         console.error(err);

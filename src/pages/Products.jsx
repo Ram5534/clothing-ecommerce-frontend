@@ -11,7 +11,7 @@ export default function Products() {
   const load = async (params = {}) => {
     try {
       const qs = new URLSearchParams(params).toString();
-      const res = await API.get("/products" + (qs ? `?${qs}` : ""));
+      const res = await API.get("api/products" + (qs ? `?${qs}` : ""));
       // backend returns { items, total, page, limit }
       const data = res.data;
       setProducts(data.items || data);

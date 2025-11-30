@@ -13,7 +13,7 @@ export default function ProductDetail() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await API.get(`/products/${id}`);
+        const res = await API.get(`api/products/${id}`);
         setProduct(res.data);
       } catch (err) {
         console.error(err);

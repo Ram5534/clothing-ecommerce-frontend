@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext";
 export default function ProductCard({ p }) {
   const { addToCart, guestId } = useContext(CartContext);
   const base = import.meta.env.VITE_API_URL;
-  const img = p.image ? `${base}/${p.image}` : null;
+const img = p.image ? `${base}/${p.image}` : null;
 
 
   const handleAdd = async () => {

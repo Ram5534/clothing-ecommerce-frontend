@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
   const loadCart = async () => {
     try {
       const params = user ? {} : { guestId };
-      const res = await API.get("/cart", { params });
+      const res = await API.get("api/cart", { params });
       // backend returns cart or { items: [] }
       const c = res.data || { items: [] };
       setCart(c);
@@ -43,7 +43,7 @@ export const CartProvider = ({ children }) => {
     const mergeAndLoad = async () => {
       if (user) {
         try {
-          await API.post("/cart/merge", { guestId }); // requires cookie (user)
+          await API.post("api/cart/merge", { guestId }); // requires cookie (user)
         } catch (err) {
           console.error("Merge cart failed", err?.response?.data || err.message);
         } finally {
@@ -65,7 +65,7 @@ export const CartProvider = ({ children }) => {
     try {
       const body = { productId, qty };
       if (!user) body.guestId = guestId;
-      const res = await API.post("/cart/add", body);
+      const res = await API.post("api/cart/add", body);
       setCart(res.data);
       return res.data;
     } catch (err) {
@@ -78,7 +78,7 @@ export const CartProvider = ({ children }) => {
     try {
       const body = { itemId, quantity };
       if (!user) body.guestId = guestId;
-      const res = await API.put("/cart/update", body);
+      const res = await API.put("api/cart/update", body);
       setCart(res.data);
       return res.data;
     } catch (err) {
@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
     try {
       const body = { itemId };
       if (!user) body.guestId = guestId;
-      const res = await API.delete("/cart/remove", { data: body });
+      const res = await API.delete("api/cart/remove", { data: body });
       setCart(res.data);
       return res.data;
     } catch (err) {
