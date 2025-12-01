@@ -4,6 +4,9 @@ import axios from "axios";
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true, // allow cookies for JWT
+  headers: {
+    "Cache-Control": "no-cache",
+  },
 });
 
 export default API;
