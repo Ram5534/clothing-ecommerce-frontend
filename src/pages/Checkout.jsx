@@ -31,7 +31,7 @@ export default function Checkout() {
       }));
 
       // FIXED URL
-      const res = await API.post("/orders/add-order", {
+      const res = await API.post("/orders/add-orders", {
         items,
         total,
         name,
