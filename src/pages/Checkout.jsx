@@ -25,13 +25,20 @@ export default function Checkout() {
     }
 
     try {
-      // prepare items in simple form expected by backend
       const items = (cart.items || []).map(it => ({
         productId: it.productId._id || it.productId,
         quantity: it.quantity
       }));
 
-      const res = await API.post("/api/orders", { items, total, name, email, guestId });
+      // FIXED URL
+      const res = await API.post("/orders", {
+        items,
+        total,
+        name,
+        email,
+        guestId
+      });
+
       clearCartLocal();
       navigate(`/order-success/${res.data._id}`);
     } catch (err) {
