@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://clothing-ecommerce-backend-1.onrender.com/api",
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true, // allow cookies for JWT
 });
 
