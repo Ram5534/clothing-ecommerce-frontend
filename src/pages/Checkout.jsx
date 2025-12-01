@@ -31,7 +31,7 @@ export default function Checkout() {
         quantity: it.quantity
       }));
 
-      const res = await API.post("api/orders", { items, total, name, email, guestId });
+      const res = await API.post("/api/orders", { items, total, name, email, guestId });
       clearCartLocal();
       navigate(`/order-success/${res.data._id}`);
     } catch (err) {

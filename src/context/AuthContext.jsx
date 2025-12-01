@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const checkUser = async () => {
     try {
       setChecking(true);
-      const res = await API.get("api/auth/me");
+      const res = await API.get("/api/auth/me");
       setUser(res.data);
     } catch (err) {
       setUser(null);
@@ -27,20 +27,20 @@ export const AuthProvider = ({ children }) => {
 
   // register/login accept guestId so backend can merge cart
   const register = async ({ name, email, password, guestId }) => {
-    const res = await API.post("api/auth/register", { name, email, password, guestId });
+    const res = await API.post("/api/auth/register", { name, email, password, guestId });
     setUser(res.data);
     return res.data;
   };
 
   const login = async ({ email, password, guestId }) => {
-    const res = await API.post("api/auth/login", { email, password, guestId });
+    const res = await API.post("/api/auth/login", { email, password, guestId });
     setUser(res.data);
     return res.data;
   };
 
   const logout = async () => {
     try {
-      await API.post("api/auth/logout");
+      await API.post("/api/auth/logout");
     } catch (err) {
       // ignore
     }
